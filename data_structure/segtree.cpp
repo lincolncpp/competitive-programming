@@ -23,22 +23,16 @@ struct segtree{
     }
 
     void push(int v, int tl, int tr){
-        int mid = (tl+tr)/2;
-        T sl = mid-tl+1;
-        T sr = tr-mid;
-
-        tree[2*v] += lazy[v]*sl;
-        lazy[2*v] += lazy[v];
-        tree[2*v+1] += lazy[v]*sr;
-        lazy[2*v+1] += lazy[v];
+        tree[v] += (tr-tl+1)*lazy[v];
+        if (tr != tl) lazy[2*v] = lazy[2*v+1] = lazy[v];
         lazy[v] = 0;
     }
 
     T update(int l, int r, T value, int v = 1, int tl = 0, int tr = MAXN-1){
         if (l > r) return 0;
         if (tl == l && tr == r) {
-            tree[v] += value*(tr-tl+1);
             lazy[v] += value;
+            push(v, tl, tr);
             return tree[v];
         }
 
@@ -67,6 +61,8 @@ int main(){
     tree.update(0, 9, 7);
     tree.update(0, 9, -7);
     tree.update(0, 9, -99);
+
+    tree.update(9, 9, 90);
 
     cout << tree.query(0, 9) << endl;
 
