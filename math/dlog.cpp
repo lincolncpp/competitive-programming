@@ -16,7 +16,7 @@ int dlog(int a, int b, int m){
     for(int p = 1, cur = an;p <= n;p++){
         if (cur == 0) break;
         if (values.count(cur) == 0) values[cur] = p;
-        cur = (an*(ll)an)%m;
+        cur = (cur*(ll)an)%m;
     }
 
     int c = b;
