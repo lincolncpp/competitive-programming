@@ -14,7 +14,6 @@ ll mul(ll a, ll b, ll MOD){
 
 ll fast_exp(ll x, ll n, ll m){
     if (n == 0) return 1;
-    if (n == 1) return x;
     if (n%2 == 0){
         ll y = fast_exp(x, n/2, m);
         return mul(y, y, m);
