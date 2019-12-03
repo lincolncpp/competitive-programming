@@ -4,30 +4,32 @@ using namespace std;
 
 #define ll long long
 
-int powmod(int x, int n, int MOD){
-    if (n == 0) return 1;
-    if (n%2 == 0){
-        ll y = powmod(x, n/2, MOD);
-        return (y*y)%MOD;
-    }
-    return (powmod(x, n-1, MOD)*(ll)x)%MOD;
+ll mul(ll a, ll b, ll MOD){
+    return (__int128(a)*b)%MOD;
 }
 
-int dlog(int a, int b, int m){
-    int n = (int)sqrt(m)+1;
+ll dlog(ll a, ll b, ll m){
+    ll n = sqrt(m)+1;
 
-    unordered_map<int, int>values;
-    for(int p = 1;p <= n;p++){
-        values[powmod(a, n*p, m)] = p;
+    ll an = 1;
+    for(int i = 0;i < n;i++){
+        an = mul(an, a, m);
     }
 
-    int c = b;
-    for(int q = 0;q <= n;q++){
+    unordered_map<ll, ll>values;
+    for(ll p = 1, cur = an;p <= n;p++){
+        if (cur == 0) break;
+        if (values.count(cur) == 0) values[cur] = p;
+        cur = mul(cur, an, m);
+    }
+
+    ll c = b;
+    for(ll q = 0;q <= n;q++){
         if (values.count(c)){
-            int x = values[c]*n-q;
+            ll x = values[c]*n-q;
             return x;
         }
-        c = (c*(ll)a)%m;
+        c = mul(c, a, m);
     }
 
     return -1;
@@ -35,7 +37,7 @@ int dlog(int a, int b, int m){
 
 int main(){
 
-    cout << dlog(7, 666, 2011) << endl;
+    cout << dlog(5, 33, 58) << endl;
 
     return 0;
 }
