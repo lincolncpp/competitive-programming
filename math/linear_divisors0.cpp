@@ -13,6 +13,7 @@ void sieve(){
         lp[i] = {i, 1};
     }
     divisors[1] = 1;
+
     vector<int>primes;
     for(int i = 2;i <= MAXN;i++){
         if (divisors[i] == 2) primes.push_back(i);
@@ -37,6 +38,8 @@ int main(){
     sieve();
 
     int x;cin>>x;
+
+    // Number of divisors
     cout << divisors[x] << endl;
 
     return 0;
