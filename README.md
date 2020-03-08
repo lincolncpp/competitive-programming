@@ -1,4 +1,5 @@
 ## Competitive programming stuffs
+My implementations of data structures and algorithms for competitive programming
 
 ### Data Structures 
 + [x] Fenwick tree - [**bit.cpp**](data_structure/bit.cpp)
@@ -25,9 +26,9 @@
 + [x] Linear Eratosthenes sieve - [**linear_sieve.cpp**](math/linear_sieve.cpp)
 + [x] Least prime factor - [**lpf.cpp**](math/lpf.cpp)
 + [x] Matrix exponentiation - [**matrix_expo.cpp**](math/matrix_expo.cpp)
-+ [x] Euler's totient function in O(sqrtN) - [**phi.cpp**](math/phi.cpp)
-+ [x] Pollard Rho 128 bits - [**pollard_rho_128bits.cpp**](math/pollard_rho_128bits.cpp)
-+ [x] Pollard Rho - [**pollard_rho.cpp**](math/pollard_rho.cpp)
++ [x] Euler's totient function - [**phi.cpp**](math/phi.cpp)
++ [x] Pollard's Rho 128 bits - [**pollard_rho_128bits.cpp**](math/pollard_rho_128bits.cpp)
++ [x] Pollard's Rho - [**pollard_rho.cpp**](math/pollard_rho.cpp)
 + [x] Primitive root - [**primitive_root.cpp**](math/primitive_root.cpp)
 + [x] Rabin–Miller primality test - [**rabin_miller.cpp**](math/rabin_miller.cpp)
 + [x] Segmented sieve - [**segmented_sieve.cpp**](math/segmented_sieve.cpp)
@@ -35,6 +36,7 @@
 ### String
 + [x] Prefix function - [**prefix_function.cpp**](string/prefix_function.cpp)
 + [x] Z algorithm - [**z.cpp**](string/z.cpp)
++ [ ] Trie
 + [ ] Knuth-Morris-Pratt
 + [ ] Aho-Corasick
 + [ ] Suffix tree
