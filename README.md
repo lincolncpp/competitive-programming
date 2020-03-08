@@ -3,12 +3,12 @@ My implementations of data structures and algorithms for competitive programming
 
 
 ### Data Structures 
-+ [x] Fenwick tree - [**bit.cpp**](data_structure/bit.cpp)
-+ [x] Disjoint set union - [**dsu.cpp**](data_structure/dsu.cpp)
-+ [x] Minimum queue - [**min_queue.cpp**](data_structure/min_queue.cpp)
-+ [x] Mo's algorithm - [**mo.cpp**](data_structure/mo.cpp)
-+ [x] Segment tree - [**segtree.cpp**](data_structure/segtree.cpp)
-+ [x] Sparse table - [**sparse_table.cpp**](data_structure/sparse_table.cpp)
++ [x] [Fenwick tree](data_structure/bit.cpp)
++ [x] [Disjoint set union](data_structure/dsu.cpp)
++ [x] [Minimum queue](data_structure/min_queue.cpp)
++ [x] [Mo's algorithm](data_structure/mo.cpp)
++ [x] [Segment tree](data_structure/segtree.cpp)
++ [x] [Sparse table](data_structure/sparse_table.cpp)
 + [ ] Treap
 
 ### Graph
