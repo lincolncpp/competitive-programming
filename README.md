@@ -42,6 +42,3 @@ My implementations of data structures and algorithms for competitive programming
 + [ ] Aho-Corasick
 + [ ] Suffix tree
 + [ ] Suffix array
-
-## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
