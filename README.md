@@ -1,6 +1,8 @@
 ## Competitive programming stuffs
 My implementations of data structures and algorithms for competitive programming
 
+---
+
 ### Data Structures 
 + [x] Fenwick tree - [**bit.cpp**](data_structure/bit.cpp)
 + [x] Disjoint set union - [**dsu.cpp**](data_structure/dsu.cpp)
