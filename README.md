@@ -35,8 +35,8 @@ My implementations of data structures and algorithms for competitive programming
 + [x] [Segmented sieve](math/segmented_sieve.cpp)
 
 ### String
-+ [x] Prefix function - [**prefix_function.cpp**](string/prefix_function.cpp)
-+ [x] Z algorithm - [**z.cpp**](string/z.cpp)
++ [x] [Prefix function](string/prefix_function.cpp)
++ [x] [Z algorithm](string/z.cpp)
 + [ ] Trie
 + [ ] Knuth-Morris-Pratt
 + [ ] Aho-Corasick
