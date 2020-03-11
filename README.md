@@ -16,6 +16,7 @@ My implementations of data structures and algorithms for competitive programming
 + [x] [Floyd-Warshall](graph/floyd.cpp)
 + [x] [Kruskal](graph/kruskal.cpp)
 + [x] [Least common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
++ [x] [Eulerian path](graph/eulerian_path.cpp)
 
 ### Math
 + [x] [Discrete logarithm](math/discrete_log.cpp)
