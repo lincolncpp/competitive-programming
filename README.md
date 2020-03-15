@@ -21,6 +21,10 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Least common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
 1. - [x] [Eulerian path](graph/eulerian_path.cpp)
 
+### Dynamic Programming
+1. - [ ] Longest common subsequence
+1. - [ ] Longest palindromic subsequence
+
 ### Math
 1. - [x] [Discrete logarithm](math/discrete_log.cpp)
 1. - [x] [Discrete root](math/discrete_root.cpp)
