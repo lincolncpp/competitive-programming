@@ -20,7 +20,7 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Kruskal](graph/kruskal.cpp)
 1. - [x] [Least common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
 1. - [x] [Eulerian path](graph/eulerian_path.cpp)
-1. - [ ] Topological sort
+1. - [x] [Topological sort](graph/topological_sort.cpp)
 
 ### Dynamic Programming
 1. - [ ] Longest common subsequence
