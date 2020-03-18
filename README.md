@@ -26,7 +26,7 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
 1. - [x] [Longest palindromic subsequence](dp/lps.cpp)
 1. - [x] [Longest increasing subsequence](dp/lis.cpp)
-1. - [x] [Longest increasing subsequence using fenwick tree O(N.LogN)](dp/lis_nlog.cpp)
+1. - [x] [Longest increasing subsequence using fenwick tree O(NLogN)](dp/lis_nlog.cpp)
 
 ### Math
 1. - [x] [Discrete logarithm](math/discrete_log.cpp)
