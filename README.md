@@ -46,6 +46,7 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Segmented sieve](math/segmented_sieve.cpp)
 
 ### String
+1. - [x] [Longest palindromic substring O(N²)](string/lp_substring.cpp)
 1. - [x] [Prefix function](string/prefix_function.cpp)
 1. - [x] [Z algorithm](string/z.cpp)
 1. - [ ] Trie
