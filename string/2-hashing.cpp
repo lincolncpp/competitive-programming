@@ -5,10 +5,12 @@ using namespace std;
 #define ll long long
 #define hash apdmfoiwahofqjenfoj
 
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
 const int maxn = 1e6;
-const ll pa = 1091;
-const ll pb = 4201;
 const ll mod = 1e9+7;
+ll pa = 0;
+ll pb = 0;
 
 ll power_a[maxn+7] = {};
 ll power_b[maxn+7] = {};
@@ -72,6 +74,9 @@ struct hash{
 };
 
 void build(){
+    while(pa < 100) pa = rng();
+    while(pb < 100) pb = rng();
+
     ll ipa = modpow(pa, mod-2);
     ll ipb = modpow(pb, mod-2);
 
