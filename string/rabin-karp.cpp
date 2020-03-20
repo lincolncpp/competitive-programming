@@ -25,7 +25,7 @@ vector<int> rabin_karp(const string &s, const string &t){
 
     ll hash_t = 0;
     for(int i = 0;i < m;i++)
-        (hash_t += s[i]*power[i] % mod) %= mod;
+        (hash_t += t[i]*power[i] % mod) %= mod;
 
     vector<int>res;
     for(int i = 0;i+m-1 < n;i++){
