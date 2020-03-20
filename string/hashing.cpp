@@ -5,9 +5,11 @@ using namespace std;
 #define ll long long
 #define hash apdmfoiwahofqjenfoj
 
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
 const int maxn = 1e6;
-const ll p = 31;
 const ll mod = 1e9+7;
+ll p = 0;
 
 ll power[maxn+7] = {};
 ll inverse[maxn+7] = {};
@@ -61,15 +63,14 @@ struct hash{
 };
 
 void build(){
+    while(p < 100) p = rng();
     ll ip = modpow(p, mod-2);
-    
-    ll pwr = 1;
-    ll ipwr = 1;
-    for(int i = 0;i < maxn;i++){
-        power[i] = pwr;
-        inverse[i] = ipwr;
-        (pwr *= p) %= mod;
-        (ipwr *= ip) %= mod;
+
+    power[0] = 1;
+    inverse[0] = 1;
+    for(int i = 1;i < maxn;i++){
+        power[i] = power[i-1]*p % mod;
+        inverse[i] = inverse[i-1]*ip % mod;
     }
 }
 

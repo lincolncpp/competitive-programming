@@ -80,19 +80,15 @@ void build(){
     ll ipa = modpow(pa, mod-2);
     ll ipb = modpow(pb, mod-2);
 
-    ll pwra = 1;
-    ll pwrb = 1;
-    ll ipwra = 1;
-    ll ipwrb = 1;
-    for(int i = 0;i < maxn;i++){
-        power_a[i] = pwra;
-        power_b[i] = pwrb;
-        inverse_a[i] = ipwra;
-        inverse_b[i] = ipwrb;
-        (pwra *= pa) %= mod;
-        (pwrb *= pb) %= mod;
-        (ipwra *= ipa) %= mod;
-        (ipwrb *= ipb) %= mod;
+    power_a[0] = 1;
+    power_b[0] = 1;
+    inverse_a[0] = 1;
+    inverse_b[0] = 1;
+    for(int i = 1;i < maxn;i++){
+        power_a[i] = power_a[i-1]*pa % mod;
+        power_b[i] = power_b[i-1]*pb % mod;
+        inverse_a[i] = inverse_a[i-1]*ipa % mod;
+        inverse_b[i] = inverse_b[i-1]*ipb % mod;
     }
 }
 
