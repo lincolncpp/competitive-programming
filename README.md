@@ -39,17 +39,18 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Least prime factor](math/lpf.cpp)
 1. - [x] [Matrix exponentiation](math/matrix_expo.cpp)
 1. - [x] [Euler's totient function](math/phi.cpp)
-1. - [x] [Pollard's Rho 128 bits](math/pollard_rho_128bits.cpp)
+1. - [x] [Pollard's Rho 128 bit](math/pollard_rho_128bit.cpp)
 1. - [x] [Pollard's Rho](math/pollard_rho.cpp)
 1. - [x] [Primitive root](math/primitive_root.cpp)
 1. - [x] [Rabin–Miller primality test](math/rabin_miller.cpp)
 1. - [x] [Segmented sieve](math/segmented_sieve.cpp)
+1. - [x] [Modular multiplication 64 bit in O(1)](math/modmul_64bit.cpp)
 
 ### String
 1. - [x] [Longest palindromic substring O(N²)](string/lp_substring.cpp)
 1. - [x] [Hashing](string/hashing.cpp)
-1. - [x] [Double hashing](string/2-hashing.cpp)
-1. - [x] [Rabin-Karp](string/rabin-karp.cpp)
+1. - [x] [Double hashing](string/double_hashing.cpp)
+1. - [x] [Rabin-Karp](string/rabin_karp.cpp)
 1. - [x] [Prefix function](string/prefix_function.cpp)
 1. - [x] [Z algorithm](string/z.cpp)
 1. - [ ] Trie
