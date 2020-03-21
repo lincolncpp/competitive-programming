@@ -9,7 +9,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 const int maxn = 1e6;
 const ll mod = 1e9+7;
-ll p = 0;
+const ll p = uniform_int_distribution<int>(100, mod-1)(rng);
 
 ll power[maxn+7] = {};
 ll inverse[maxn+7] = {};
@@ -63,7 +63,6 @@ struct hash{
 };
 
 void build(){
-    while(p < 100) p = rng();
     ll ip = modpow(p, mod-2);
 
     power[0] = 1;
