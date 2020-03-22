@@ -49,7 +49,7 @@ My implementations of data structures and algorithms for competitive programming
 ### String
 1. - [x] [Longest palindromic substring O(N²)](string/lp_substring.cpp)
 1. - [x] [Hashing](string/hashing.cpp)
-1. - [x] [Double hashing](string/double_hashing.cpp)
+1. - [x] [Multiple hashing](string/multiple_hashing.cpp)
 1. - [x] [Rabin-Karp](string/rabin_karp.cpp)
 1. - [x] [Prefix function](string/prefix_function.cpp)
 1. - [x] [Z algorithm](string/z.cpp)
