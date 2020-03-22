@@ -9,7 +9,6 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 const int maxn = 1e6;
 const ll mod = 1e9+7;
-const ll p = uniform_int_distribution<int>(100, mod-1)(rng);
 
 ll power[maxn+7] = {};
 ll inverse[maxn+7] = {};
@@ -23,24 +22,22 @@ ll modpow(ll x, ll n){
 
 struct hash{
     int n;
-    ll val = 0;
-    ll rval = 0;
-    vector<ll>prefix;
-    vector<ll>suffix;
+    vector<ll>prefix, suffix;
 
     hash(const string &s){
         n = (int)s.size();
+
         prefix.resize(n);
         suffix.resize(n);
 
-        for(int i = 0;i < n;i++){
-            (val += s[i]*power[i]) %= mod;
-            prefix[i] = val;
-        }
+        prefix[0] = s[0];
+        suffix[n-1] = s[n-1];
 
-        for(int i = n-1;i >= 0;i--){
-            (rval += s[i]*power[n-1-i]) %= mod;
-            suffix[i] = rval;
+        for(int i = 1;i < n;i++){
+            (prefix[i] = prefix[i-1] + s[i]*power[i] % mod) %= mod;
+        }
+        for(int i = n-2;i >= 0;i--){
+            (suffix[i] = suffix[i+1] + s[i]*power[n-1-i] % mod) %= mod;
         }
     }
 
@@ -63,6 +60,7 @@ struct hash{
 };
 
 void build(){
+    ll p = uniform_int_distribution<int>(100, mod-1)(rng);
     ll ip = modpow(p, mod-2);
 
     power[0] = 1;
@@ -81,6 +79,7 @@ int main(){
     int n = (int)s.size();
 
     hash h(s);
+
     cout << h.is_palindrome(0, n-1) << endl;
 
     return 0;
