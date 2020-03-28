@@ -53,3 +53,4 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Rabin-Karp](string/rabin_karp.cpp)
 1. - [x] [Prefix function](string/prefix_function.cpp)
 1. - [x] [Z algorithm](string/z.cpp)
+1. - [x] [KMP](string/kmp.cpp)
