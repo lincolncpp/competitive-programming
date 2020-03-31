@@ -42,7 +42,7 @@ struct hash2d{
         ll res = h[x][y];
         if (a-1 >= 0) (res += mod - h[a-1][y]*power[0][x-a+1] % mod) %= mod;
         if (b-1 >= 0) (res += mod - h[x][b-1]*power[1][y-b+1] % mod) %= mod;
-        if (a*b) (res += h[a-1][b-1]*power[1][x-a+1] % mod * power[0][y-b+1] % mod) %= mod;
+        if (a*b > 0) (res += h[a-1][b-1]*power[0][x-a+1] % mod * power[1][y-b+1] % mod) %= mod;
         return res;
     }
 };
@@ -55,7 +55,11 @@ int main(){
         {0, 3, 1}
     };
 
-    hash2d hash(v, 1091, 4201);
+    hash2d hash(v,
+        uniform_int_distribution<ll>(100, mod-1)(rng), // base 1
+        uniform_int_distribution<ll>(100, mod-1)(rng)  // base 2
+    );
+
     cout << hash.submatrix(1, 1, 2, 2) << endl;
     cout << hash.submatrix(0, 0, 1, 1) << endl;
 
