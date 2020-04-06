@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define N (int)2e5+7
+int const maxn = 2e5+7;
 
 struct Query{
     int l, r, id, block;
@@ -16,10 +16,10 @@ struct Query{
     }
 };
 
-int a[N];
-Query q[N];
+int a[maxn];
+Query q[maxn];
 int ans = 0;
-int ansoff[N];
+int ansoff[maxn];
 
 void add(int pos){
     ans += a[pos];
