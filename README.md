@@ -9,7 +9,6 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Fenwick tree](data_structure/bit.cpp)
 1. - [x] [Disjoint set union](data_structure/dsu.cpp)
 1. - [x] [Minimum queue](data_structure/min_queue.cpp)
-1. - [x] [Mo's algorithm](data_structure/mo.cpp)
 1. - [x] [Segment tree](data_structure/segtree.cpp)
 1. - [x] [Sparse table](data_structure/sparse_table.cpp)
 1. - [ ] Treap
@@ -18,7 +17,7 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Dijkstra](graph/dijkstra.cpp)
 1. - [x] [Floyd-Warshall](graph/floyd.cpp)
 1. - [x] [Kruskal](graph/kruskal.cpp)
-1. - [x] [Least common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
+1. - [x] [Lowest common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
 1. - [x] [Eulerian path](graph/eulerian_path.cpp)
 1. - [x] [Topological sort](graph/topological_sort.cpp)
 
@@ -55,3 +54,7 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Prefix automaton](string/prefix_automaton.cpp)
 1. - [x] [Z algorithm](string/z.cpp)
 1. - [x] [KMP](string/kmp.cpp)
+
+### Others
+1. - [x] [Mo's algorithm](others/mo.cpp)
+1. - [x] [First element greater than element i from left/right](/others/alg1.cpp)
