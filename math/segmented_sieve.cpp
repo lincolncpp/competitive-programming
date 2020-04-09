@@ -27,7 +27,8 @@ vector<bool> ranged_sieve(ll l, ll r){
 
     for(auto p:primes){
         ll a = (l/p)*p;
-        if (a < l || a == p) a += p;
+        if (a < l || a == 0) a += p;
+        if (a == p) a += p;
         for(;a <= r;a += p) mark[a-l] = false;
     }
 
@@ -36,12 +37,13 @@ vector<bool> ranged_sieve(ll l, ll r){
 
 int main(){
 
-    ll l = 1000000000000;
-    ll r = 1000000000000+500;
+    ll l = 0;
+    ll r = 100;
 
     cout << "Primes between " << l << " and " << r << endl;
     vector<bool>mark = ranged_sieve(l, r);
     for(int i = 0;i < (int)mark.size();i++){
+        if (l+i <= 1) continue;
         if (mark[i]) cout << l+i << endl;
     }
 
