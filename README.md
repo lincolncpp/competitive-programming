@@ -2,7 +2,7 @@
 [![license](https://img.shields.io/github/license/lincolncpp/grape2d.svg)](LICENSE)
 
 ## Competitive programming stuffs
-My implementations of data structures and algorithms for competitive programming
+Data structures and algorithms for competitive programming.
 
 
 ### Data Structures 
