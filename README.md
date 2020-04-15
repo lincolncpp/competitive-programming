@@ -2,7 +2,7 @@
 [![license](https://img.shields.io/github/license/lincolncpp/grape2d.svg)](LICENSE)
 
 ## Competitive programming stuffs
-My implementations of data structures and algorithms for competitive programming
+Data structures and algorithms for competitive programming.
 
 
 ### Data Structures 
@@ -11,6 +11,7 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Minimum queue](data_structure/min_queue.cpp)
 1. - [x] [Segment tree](data_structure/segtree.cpp)
 1. - [x] [Sparse table](data_structure/sparse_table.cpp)
+1. - [x] [Ordered set](data_structure/ordered_set.cpp)
 1. - [ ] Treap
 
 ### Graph
@@ -54,6 +55,7 @@ My implementations of data structures and algorithms for competitive programming
 1. - [x] [Prefix automaton](string/prefix_automaton.cpp)
 1. - [x] [Z function](string/z.cpp)
 1. - [x] [KMP](string/kmp.cpp)
+1. - [x] [Trie](string/trie.cpp)
 
 ### Others
 1. - [x] [Mo's algorithm](others/mo.cpp)
