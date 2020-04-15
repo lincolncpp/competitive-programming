@@ -9,17 +9,17 @@ private:
         node *l = nullptr, *r = nullptr;
         int cnt = 1;
 
-        node(int key) : key(key), prior(rand()) {}
+        node(int k) : key(k), prior(rand()) {}
     };
 
     node *t = nullptr;
 
-    int cnt(node *t){
-        return t?t->cnt:0;
+    int cnt(node *n){
+        return n?n->cnt:0;
     }
 
-    void upd_cnt(node *t){
-        if (t) t->cnt = 1+cnt(t->l)+cnt(t->r);
+    void upd_cnt(node *n){
+        if (n) n->cnt = 1+cnt(n->l)+cnt(n->r);
     }
 
     void split(node *root, int key, node *&l, node *&r){
