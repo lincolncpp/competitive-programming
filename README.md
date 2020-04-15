@@ -12,7 +12,7 @@ Data structures and algorithms for competitive programming.
 1. - [x] [Segment tree](data_structure/segtree.cpp)
 1. - [x] [Sparse table](data_structure/sparse_table.cpp)
 1. - [x] [Ordered set](data_structure/ordered_set.cpp)
-1. - [ ] Treap
+1. - [x] [Treap](data_structure/treap.cpp)
 
 ### Graph
 1. - [x] [Dijkstra](graph/dijkstra.cpp)
