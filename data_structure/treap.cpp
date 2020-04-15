@@ -81,8 +81,25 @@ private:
         upd_cnt(root);
     }
 
-    // O(M*log(N/M))
-    node *unite(node *l, node *r){
+    void del(node *n){
+        if (!n) return;
+        del(n->l);
+        del(n->r);
+        delete n;
+    }
+
+    /* ==================== EXTRA ==================== */
+    int kth(node *root, int pos){ // O(log(N))
+        if (!root) return 0;
+
+        int p = 1+cnt(root->l);
+        if (p == pos) return root->key;
+
+        if (p > pos) return kth(root->l, pos);
+        else return kth(root->r, pos-p);
+    }
+
+    node *unite(node *l, node *r){ // O(M*log(N/M))
         if (!l || !r) return l?l:r;
         if (l->prior < r->prior) swap(l, r);
         node *tl;
@@ -95,28 +112,11 @@ private:
         return l;
     }
 
-    int kth(node *root, int pos){
-        if (!root) return 0;
-
-        int p = 1+cnt(root->l);
-        if (p == pos) return root->key;
-
-        if (p > pos) return kth(root->l, pos);
-        else return kth(root->r, pos-p);
-    }
-
     void print(node *n){
         if (!n) return;
         print(n->l);
         cout << n->key << " ";
         print(n->r);
-    }
-
-    void del(node *n){
-        if (!n) return;
-        del(n->l);
-        del(n->r);
-        delete n;
     }
 
 public:
@@ -126,6 +126,20 @@ public:
 
     void erase(int key){
         erase(t, key);
+    }
+
+    ~treap(){
+        del(t);
+    }
+
+    /* ==================== EXTRA ==================== */
+    bool find(int key){
+        node *aux = t;
+        while(aux && aux->key != key){
+            if (key < aux->key) aux = aux->l;
+            else aux = aux->r;
+        }
+        return aux != nullptr;
     }
 
     int order_of_key(int key){
@@ -163,10 +177,6 @@ public:
     void print(){
         print(t);
         cout << endl;
-    }
-
-    ~treap(){
-        del(t);
     }
 };
 
@@ -209,6 +219,9 @@ int main(){
     cout << "order of key 156" << endl;
     cout << t.order_of_key(156) << endl;
     cout << endl;
+
+    cout << "find 11" << endl;
+    cout << t.find(11) << endl;
 
     return 0;
 }
