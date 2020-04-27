@@ -21,6 +21,8 @@ Data structures and algorithms for competitive programming.
 1. - [x] [Lowest common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
 1. - [x] [Eulerian path](graph/eulerian_path.cpp)
 1. - [x] [Topological sort](graph/topological_sort.cpp)
+1. - [ ] Centroid decomposition
+1. - [ ] Heavy-light decomposition
 
 ### Dynamic Programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
