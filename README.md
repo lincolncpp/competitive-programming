@@ -13,6 +13,7 @@ Data structures and algorithms for competitive programming.
 1. - [x] [Sparse table](data_structure/sparse_table.cpp)
 1. - [x] [Ordered set](data_structure/ordered_set.cpp)
 1. - [x] [Treap](data_structure/treap.cpp)
+1. - [ ] Implicit Treap
 
 ### Graph
 1. - [x] [Dijkstra](graph/dijkstra.cpp)
@@ -21,11 +22,13 @@ Data structures and algorithms for competitive programming.
 1. - [x] [Lowest common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
 1. - [x] [Eulerian path](graph/eulerian_path.cpp)
 1. - [x] [Topological sort](graph/topological_sort.cpp)
+1. - [ ] Centroid decomposition
+1. - [ ] Heavy-light decomposition
 
 ### Dynamic Programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
 1. - [x] [Longest palindromic subsequence](dp/lps.cpp)
-1. - [x] [Longest increasing subsequence](dp/lis.cpp)
+1. - [x] [Longest increasing subsequence O(N^2)](dp/lis.cpp)
 1. - [x] [Longest increasing subsequence using fenwick tree O(NlogN)](dp/lis_nlog.cpp)
 
 ### Math
@@ -47,7 +50,7 @@ Data structures and algorithms for competitive programming.
 1. - [x] [Modular multiplication 64 bit in O(1)](math/modmul_64bit.cpp)
 
 ### String
-1. - [x] [Longest palindromic substring O(N²)](string/lp_substring.cpp)
+1. - [x] [Longest palindromic substring O(N^2)](string/lp_substring.cpp)
 1. - [x] [Hashing](string/hashing.cpp)
 1. - [x] [Hashing 2D](string/hashing2d.cpp)
 1. - [x] [Rabin-Karp](string/rabin_karp.cpp)
