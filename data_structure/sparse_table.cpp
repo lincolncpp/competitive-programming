@@ -2,36 +2,37 @@
 
 using namespace std;
 
-#define N 100000
-#define K 20
+#define lg2(x) 31-__builtin_clz(x)
 
-int st[N+7][K+3] = {};
+const int maxn = 1e5;
+const int logmaxn = lg2(maxn);
 
-int main(){
+int st[maxn+7][logmaxn+3] = {};
 
-    vector<int>v = {8, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 7, 6, 5, 4, 3, 2, 1};
+void build(const vector<int>&v){
     int n = (int)v.size();
 
-    // Range maximum query
     for(int i = 0;i < n;i++) st[i][0] = v[i];
 
-    for(int j = 1;j <= K;j++){
-        for(int i = 0;i+(1<<j) <= N;i++){
+    for(int j = 1;j <= logmaxn;j++){
+        for(int i = 0;i+(1<<j) <= maxn+1;i++){
             st[i][j] = max(st[i][j-1], st[i+(1<<(j-1))][j-1]);
         }
     }
+}
 
-    int log[N+7] = {};
-    log[1] = 0;
-    for(int i = 2;i <= N;i++) log[i] = log[i/2]+1;
+// Range maximum query
+int query(int l, int r){
+    int j = lg2(r-l+1);
+    return max(st[l][j], st[r-(1<<j)+1][j]);
+}
 
-    int l = 0;
-    int r = 7;
+int main(){
 
-    int j = log[r-l+1];
-    int query = max(st[l][j], st[r-(1<<j)+1][j]);
+    vector<int>v = {10, 2, 3, 4, 5, 6};
+    build(v);
 
-    cout << query << endl;
+    cout << query(1, 4) << endl;
 
     return 0;
 }
