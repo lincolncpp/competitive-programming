@@ -62,4 +62,5 @@ Data structures and algorithms for competitive programming.
 
 ### Others
 1. - [x] [Mo's algorithm](others/mo.cpp)
-1. - [x] [First element greater than element i from left/right](/others/alg1.cpp)
+1. - [x] [First element greater than element i from left/right](others/alg1.cpp)
+1. - [x] [Check ancestor in O(1)](others/ancestor.cpp)
