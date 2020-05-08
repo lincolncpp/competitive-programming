@@ -23,7 +23,8 @@ Data structures and algorithms for competitive programming.
 1. - [x] [Eulerian path](graph/eulerian_path.cpp)
 1. - [x] [Topological sort](graph/topological_sort.cpp)
 1. - [ ] Centroid decomposition
-1. - [ ] [Heavy-light decomposition](graph/hld.cpp)
+1. - [x] [Heavy-light decomposition](graph/hld.cpp)
+1. - [x] [Edmonds Karp](graph/edmonds_karp.cpp)
 
 ### Dynamic Programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
