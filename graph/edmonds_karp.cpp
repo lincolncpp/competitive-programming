@@ -43,7 +43,7 @@ int max_flow(int s, int t){
         flow += add;
 
         int a = t;
-        while(parent[a] != s){
+        while(a != s){
             int b = parent[a];
             capacity[a][b] += add;
             capacity[b][a] -= add;
