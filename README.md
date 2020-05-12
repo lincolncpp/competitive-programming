@@ -25,6 +25,7 @@ Data structures and algorithms for competitive programming.
 1. - [ ] Centroid decomposition
 1. - [x] [Heavy-light decomposition](graph/hld.cpp)
 1. - [x] [Edmonds Karp](graph/edmonds_karp.cpp)
+1. - [x] [Dinic's algorithm](graph/dinic.cpp)
 
 ### Dynamic Programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
