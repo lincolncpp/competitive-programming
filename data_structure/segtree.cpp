@@ -3,55 +3,36 @@
 using namespace std;
 
 const int maxn = 1e5;
-int tree[4*maxn+7] = {};
-int lazy[4*maxn+7] = {};
+int tree[4*maxn+11] = {};
 int n;
 
-void build(const vector<int>&v, int node = 1, int tl = 0, int tr = n-1){
-    if (tl == tr) return void(tree[node] = v[tl]);
+void update(int i, int val, int node = 1, int tl = 0, int tr = n-1){
+    if (tl > i || tr < i) return;
+    if (tl == tr && tl == i) return void(tree[node] = val);
+
     int mid = (tl+tr)/2;
-    build(v, node*2, tl, mid);
-    build(v, node*2+1, mid+1, tr);
-    tree[node] = tree[node*2]+tree[node*2+1];
+    update(i, val, node*2, tl, mid);
+    update(i, val, node*2+1, mid+1, tr);
+    tree[node] = min(tree[node*2], tree[node*2+1]);
 }
 
-void push(int node, int tl, int tr){
-    if (tl == tr) tree[node] += lazy[node];
-    else{
-        tree[node] += lazy[node]*(tr-tl+1);
-        lazy[node*2] += lazy[node];
-        lazy[node*2+1] += lazy[node];
-    }
-    lazy[node] = 0;
-}
+// Range min query
+int query(int l, int r, int node = 1, int tl = 0, int tr = n-1){
+    if (l > r) return 0x7fffffff;
+    if (tl == l && tr == r) return tree[node];
 
-int update(int l, int r, int val, int node = 1, int tl = 0, int tr = n-1){
-    push(node, tl, tr);
-    if (l > r) return 0;
-    if (tl == l && tr == r){
-        lazy[node] += val;
-        push(node, tl, tr);
-        return tree[node];
-    }
     int mid = (tl+tr)/2;
-    int left = update(l, min(r, mid), val, node*2, tl, mid);
-    int right = update(max(mid+1, l), r, val, node*2+1, mid+1, tr);
-    tree[node] = tree[node*2]+tree[node*2+1];
-    return left+right;
-}
-
-int query(int l, int r){
-    return update(l, r, 0);
+    int left = query(l, min(r, mid), node*2, tl, mid);
+    int right = query(max(l, mid+1), r, node*2+1, mid+1, tr);
+    return min(left, right);
 }
 
 int main(){
 
-    vector<int>v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int>v = {-555, 70, 4201, -956, 30};
     n = v.size();
 
-    build(v);
-
-    update(0, n-1, 10);
+    for(int i = 0;i < n;i++) update(i, v[i]);
     cout << query(0, n-1) << endl;
 
     return 0;
