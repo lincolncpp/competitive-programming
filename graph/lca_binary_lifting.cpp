@@ -5,7 +5,7 @@ using namespace std;
 const int maxn = 1e5;
 const int maxl = 20;
 int up[maxn+13][maxl+3] = {};
-int dist[maxn+13] = {};
+int dep[maxn+13] = {};
 int timein[maxn+13] = {};
 int timeout[maxn+13] = {};
 vector<int>adj[maxn+13];
@@ -13,7 +13,7 @@ int curr_time = 0;
 
 void dfs(int a, int p){
     timein[a] = curr_time++;
-    dist[a] = dist[p]+1;
+    dep[a] = dep[p]+1;
 
     up[a][0] = p;
     for(int i = 1;i <= maxl;i++){
@@ -48,7 +48,7 @@ int lca(int a, int b){
 }
 
 int distance(int a, int b){
-    return dist[a]+dist[b]-2*dist[lca(a, b)];
+    return dep[a]+dep[b]-2*dep[lca(a, b)];
 }
 
 
