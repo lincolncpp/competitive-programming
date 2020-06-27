@@ -2,61 +2,58 @@
 
 using namespace std;
 
-#define MAXN 1000
-#define MAXL 12
+const int maxn = 1e5;
+const int maxl = 20;
+int up[maxn+13][maxl+3] = {};
+int dist[maxn+13] = {};
+int timein[maxn+13] = {};
+int timeout[maxn+13] = {};
+vector<int>adj[maxn+13];
+int curr_time = 0;
 
-vector<int>adj[MAXN];
-int nivel[MAXN];
-int ancestor[MAXN][MAXL] = {};
+void dfs(int a, int p){
+    timein[a] = curr_time++;
+    dist[a] = dist[p]+1;
 
-void dfs(int a){
-    for(auto b:adj[a]){
-        nivel[b] = nivel[a]+1;
-        ancestor[b][0] = a;
-        dfs(b);
+    up[a][0] = p;
+    for(int i = 1;i <= maxl;i++){
+        up[a][i] = up[up[a][i-1]][i-1];
     }
+
+    for(int b:adj[a]){
+        if (b == p) continue;
+        dfs(b, a);
+    }
+
+    timeout[a] = curr_time++;
+}
+
+// Check if a is ancestor of b
+bool is_ancestor(int a, int b){
+    return timein[a] < timein[b] && timeout[a] > timeout[b];
 }
 
 int lca(int a, int b){
-    if (nivel[a] < nivel[b]) swap(a, b);
-
-    for(int i = MAXL-1;i >= 0;i--){
-        if (nivel[a]-(1<<i) >= nivel[b]){
-            a = ancestor[a][i];
-        }
-    }
-
     if (a == b) return a;
+    if (is_ancestor(a, b)) return a;
+    if (is_ancestor(b, a)) return b;
 
-    for(int i = MAXL-1;i >= 0;i--){
-        if (ancestor[a][i] != -1 && ancestor[a][i] != ancestor[b][i]){
-            a = ancestor[a][i];
-            b = ancestor[b][i];
+    for(int i = maxl;i >= 0;i--){
+        if (!is_ancestor(up[a][i], b)){
+            a = up[a][i];
         }
     }
 
-    return ancestor[a][0];
+    return up[a][0];
 }
 
-void build(){
-    for(int i = 1;i <= MAXN;i++){
-        for(int j = 0;j <= MAXL;j++){
-            ancestor[i][j] = -1;
-        }
-    }
-
-    nivel[1] = 0;
-    dfs(1);
-
-    for(int i = 1;i <= MAXN;i++){
-        for(int j = 1;j < MAXL;j++){
-            if (ancestor[i][j-1] == -1) continue;
-            ancestor[i][j] = ancestor[ancestor[i][j-1]][j-1];
-        }
-    }
+int distance(int a, int b){
+    return dist[a]+dist[b]-2*dist[lca(a, b)];
 }
+
 
 int main(){
+
     // Sample tree
     //
     //         1
@@ -71,9 +68,10 @@ int main(){
     adj[3].push_back(6);
     adj[3].push_back(7);
 
-    build();
+    dfs(1, 1);
 
-    cout << lca(3, 4) << endl;
+    cout << lca(4, 3) << endl;
+    cout << distance(4, 3) << endl;
 
     return 0;
 }
