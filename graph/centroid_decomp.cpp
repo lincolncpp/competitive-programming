@@ -7,7 +7,7 @@ const int maxn = 1e5;
 int n;
 vector<int>adj[maxn+13];
 int size[maxn+13] = {};
-int up[maxn+13] = {};
+int dad[maxn+13] = {};
 bool removed[maxn+13] = {};
 
 void dfs(int a, int p){
@@ -30,36 +30,13 @@ int centroid(int a, int p, int m){
 void build(int a, int p){
     dfs(a, -1);
     a = centroid(a, -1, size[a]);
-    up[a] = p;
+    dad[a] = p;
     removed[a] = true;
 
     for(int b:adj[a]){
         if (removed[b]) continue;
         build(b, a);
     }
-}
-
-int lca(int a, int b){
-    vector<int>ua, ub;
-
-    do{
-        ua.push_back(a);
-        a = up[a];
-    } while(a != -1);
-
-    do{
-        ub.push_back(b);
-        b = up[b];
-    } while(b != -1);
-
-    int c = -1;
-    while(ua.size() && ub.size() && ua.back() == ub.back()){
-        c = ua.back();
-        ua.pop_back();
-        ub.pop_back();
-    }
-
-    return c;
 }
 
 int main(){
