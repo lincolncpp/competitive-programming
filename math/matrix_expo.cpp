@@ -3,33 +3,28 @@
 using namespace std;
 
 #define ll long long
-
 const ll mod = 1e9+7;
-const int dim = 2;
 
-struct matrix{
-    ll val[dim][dim] = {};
-
-    matrix operator*(const matrix &b){
-        matrix c;
-        for(int i = 0;i < dim;i++){
-            for(int j = 0;j < dim;j++){
-                for(int k = 0;k < dim;k++){
-                    c.val[i][j] += val[i][k]*b.val[k][j] % mod;
-                }
+vector<vector<ll>> multiply(const vector<vector<ll>>&a, const vector<vector<ll>>&b){
+    vector<vector<ll>>res((int)a.size(), vector<ll>((int)a.size()));
+    for(int i = 0;i < (int)a.size();i++){
+        for(int j = 0;j < (int)a.size();j++){
+            for(int k = 0;k < (int)a.size();k++){
+                res[i][j] += a[i][k]*b[k][j];
+                res[i][j] %= mod;
             }
         }
-        return c;
     }
-};
+    return res;
+}
 
-matrix mpow(matrix a, ll n){
-    matrix res;
-    for(int i = 0;i < dim;i++) res.val[i][i] = 1;
+vector<vector<ll>> power(vector<vector<ll>>a, ll n){
+    vector<vector<ll>>res((int)a.size(), vector<ll>((int)a.size()));
+    for(int i = 0;i < (int)a.size();i++) res[i][i] = 1;
 
     while(n > 0){
-        if (n&1) res = res*a;
-        a = a*a;
+        if (n&1) res = multiply(res, a);
+        a = multiply(a, a);
         n /= 2;
     }
 
@@ -38,17 +33,15 @@ matrix mpow(matrix a, ll n){
 
 int main(){
 
-    matrix a{{
-        {1, 0},
-        {1, 1}
-    }};
+    vector<vector<ll>>r = {
+        {10, 1},
+        {1, 5}
+    };
+    r = power(r, 2);
 
-    // matrix a^1e18
-    a = mpow(a, 1000000000000000000);
-
-    for(int i = 0;i < dim;i++){
-        for(int j = 0;j < dim;j++){
-            cout << a.val[i][j] << " ";
+    for(int i = 0;i < (int)r.size();i++){
+        for(int j = 0;j < (int)r.size();j++){
+            cout << r[i][j] << " ";
         }
         cout << endl;
     }
