@@ -44,7 +44,7 @@ int main(){
     }};
 
     // matrix a^1e18
-    a = mpow(a, 10);
+    a = mpow(a, 1000000000000000000);
 
     for(int i = 0;i < dim;i++){
         for(int j = 0;j < dim;j++){
