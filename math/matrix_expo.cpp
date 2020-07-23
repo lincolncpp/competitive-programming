@@ -2,22 +2,27 @@
 
 using namespace std;
 
-typedef long long ll;
+#define ll long long
 
-#define N 3
-#define MOD 1000000007
+const ll mod = 1e9+7;
 
 struct matrix{
-    ll arr[N][N] = {0};
+    vector<vector<ll>> val;
+
+    matrix(int n){
+        val.resize(n);
+        fill(val.begin(), val.end(), vector<ll>(n));
+    }
 
     matrix operator*(const matrix &b){
-        matrix c;
+        int n = (int)b.val.size();
 
-        for(int i = 0;i < N;i++){
-            for(int j = 0;j < N;j++){
-                for(int k = 0;k < N;k++){
-                    c.arr[i][j] += arr[i][k]*b.arr[k][j];
-                    c.arr[i][j] %= MOD;
+        matrix c(n);
+        for(int i = 0;i < n;i++){
+            for(int j = 0;j < n;j++){
+                for(int k = 0;k < n;k++){
+                    c.val[i][j] += b.val[i][k]*val[k][j];
+                    c.val[i][j] %= mod;
                 }
             }
         }
@@ -25,29 +30,28 @@ struct matrix{
     }
 };
 
-matrix mexp(matrix a, ll n){
+matrix mpow(matrix a, ll n){
     if (n == 1) return a;
-    else if (n%2==0){
-        matrix b = mexp(a, n/2);
-        return b*b;
-    }
-    else return mexp(a, n-1)*a;
+    matrix b = mpow(a, n/2);
+    if (n&1) return b*b*a;
+    return b*b;
 }
 
 int main(){
 
-    matrix a;
-    a.arr[0][0] = 1;
-    a.arr[1][0] = 1;
-    a.arr[2][2] = 1;
-    a.arr[2][0] = 1;
-    a.arr[2][1] = 1;
+    matrix a(3);
+    a.val = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
 
-    a = mexp(a, 400); // matrix a^400
+    // matrix a^1e18
+    a = mpow(a, 1000000000000000000);
 
-    for(int i = 0;i < N;i++){
-        for(int j = 0;j < N;j++){
-            cout << a.arr[i][j] << " ";
+    for(int i = 0;i < 3;i++){
+        for(int j = 0;j < 3;j++){
+            cout << a.val[i][j] << " ";
         }
         cout << endl;
     }
