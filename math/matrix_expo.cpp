@@ -5,24 +5,17 @@ using namespace std;
 #define ll long long
 
 const ll mod = 1e9+7;
+const int dim = 2;
 
 struct matrix{
-    vector<vector<ll>> val;
-
-    matrix(int n){
-        val.resize(n);
-        fill(val.begin(), val.end(), vector<ll>(n));
-    }
+    ll val[dim][dim] = {};
 
     matrix operator*(const matrix &b){
-        int n = (int)b.val.size();
-
-        matrix c(n);
-        for(int i = 0;i < n;i++){
-            for(int j = 0;j < n;j++){
-                for(int k = 0;k < n;k++){
-                    c.val[i][j] += b.val[i][k]*val[k][j];
-                    c.val[i][j] %= mod;
+        matrix c;
+        for(int i = 0;i < dim;i++){
+            for(int j = 0;j < dim;j++){
+                for(int k = 0;k < dim;k++){
+                    c.val[i][j] += val[i][k]*b.val[k][j] % mod;
                 }
             }
         }
@@ -31,26 +24,30 @@ struct matrix{
 };
 
 matrix mpow(matrix a, ll n){
-    if (n == 1) return a;
-    matrix b = mpow(a, n/2);
-    if (n&1) return b*b*a;
-    return b*b;
+    matrix res;
+    for(int i = 0;i < dim;i++) res.val[i][i] = 1;
+
+    while(n > 0){
+        if (n&1) res = res*a;
+        a = a*a;
+        n /= 2;
+    }
+
+    return res;
 }
 
 int main(){
 
-    matrix a(3);
-    a.val = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
+    matrix a{{
+        {1, 0},
+        {1, 1}
+    }};
 
     // matrix a^1e18
-    a = mpow(a, 1000000000000000000);
+    a = mpow(a, 10);
 
-    for(int i = 0;i < 3;i++){
-        for(int j = 0;j < 3;j++){
+    for(int i = 0;i < dim;i++){
+        for(int j = 0;j < dim;j++){
             cout << a.val[i][j] << " ";
         }
         cout << endl;
