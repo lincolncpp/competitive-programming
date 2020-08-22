@@ -9,7 +9,7 @@ int depth[maxn+7] = {};
 int heavy[maxn+7] = {};
 int head[maxn+7] = {};
 int pos[maxn+7] = {};
-int curr_pos = 1;
+int curr_pos = 0;
 
 int tree_query(int l, int r){
     return 0;
