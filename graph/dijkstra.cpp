@@ -2,35 +2,34 @@
 
 using namespace std;
 
-#define INF (1<<29)
-#define N 1000
+const int inf = 1<<29;
+const int maxn = 1e5+13;
+
+vector<pair<int, int>>adj[maxn+11];
+int dist[maxn+11];
 
 int main(){
 
-    vector<pair<int, int>>adj[N];
-    adj[0].push_back(make_pair(7, 20));
-    adj[0].push_back(make_pair(2, 5));
-    adj[0].push_back(make_pair(3, 1));
+    int n = 10;
+    adj[1].push_back(make_pair(7, 20));
+    adj[1].push_back(make_pair(2, 5));
+    adj[1].push_back(make_pair(3, 1));
     adj[3].push_back(make_pair(2, 10));
     adj[3].push_back(make_pair(10, 1));
     adj[10].push_back(make_pair(7, 16));
 
-    int dist[N];
-    for(int i = 0;i < N;i++) dist[i] = INF;
-    dist[0] = 0;
-
-    bool processed[N] = {false};
+    for(int i = 1;i <= n;i++) dist[i] = inf;
+    dist[1] = 0;
 
     priority_queue<pair<int, int>>pq;
-    pq.push(make_pair(0, 0));
+    pq.push({0, 1});
     while(!pq.empty()){
         int a = pq.top().second;
         pq.pop();
-        if (processed[a]) continue;
-        processed[a] = true;
-        for(auto bb:adj[a]){
-            int b = bb.first;
-            int w = bb.second;
+
+        for(auto &pr:adj[a]){
+            int b = pr.first;
+            int w = pr.second;
             if (dist[a]+w < dist[b]){
                 dist[b] = dist[a]+w;
                 pq.push(make_pair(-dist[b], b));
@@ -38,7 +37,9 @@ int main(){
         }
     }
 
-    cout << dist[7] << endl;
+    for(int i = 1;i <= n;i++){
+        cout << "dist from " << 1 << " to " << i << ": " << dist[i] << endl;
+    }
 
     return 0;
 }
