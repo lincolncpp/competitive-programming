@@ -23,26 +23,21 @@ int query(int i){
 
 int main(){
 
-    vector<int>vec(maxn);
-    generate(vec.begin(), vec.end(), rand);
+    vector<int>v(maxn);
+    generate(v.begin(), v.end(), rand);
 
-    // number compression
-    map<int, int>ind;
-    vector<int>v = vec;
-    sort(v.begin(), v.end());
-    v.resize(unique(v.begin(), v.end())-v.begin());
-    for(int i = 0;i < (int)v.size();i++) ind[v[i]] = i+1;
-
-    int lis[maxn+7] = {};
-    int n = vec.size();
-    for(int i = 0;i < n;i++){
-        int val = ind[vec[i]];
-        lis[i] = 1+query(val-1);
-        update(val, lis[i]);
+    map<int, int>f;
+    int curr = 1;
+    vector<int>vsorted = v;
+    sort(vsorted.begin(), vsorted.end());
+    for(int x:vsorted){
+        if (f[x] == 0) f[x] = curr++;
     }
 
+    for(int x:v) update(f[x], 1+query(f[x]-1));
+
     cout << "Length of the longest increasing subsequence" << endl;
-    cout << query(vec.size()) << endl;
+    cout << query(curr) << endl;
 
     return 0;
 }
