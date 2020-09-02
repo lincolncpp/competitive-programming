@@ -33,7 +33,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 ### Dynamic Programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
 1. - [x] [Longest palindromic subsequence](dp/lps.cpp)
-1. - [x] [Longest increasing subsequence O(N^2)](dp/lis.cpp)
+1. - [x] [Longest increasing subsequence - naive O(N^2)](dp/lis.cpp)
 1. - [x] [Longest increasing subsequence - fenwick tree O(NlogN)](dp/lis_nlog.cpp)
 1. - [x] [Longest increasing subsequence - dp & bns O(NlogN)](dp/lis_nlog2.cpp)
 1. - [x] [Travelling salesman problem O(N^2*2^N)](dp/tsp.cpp)
