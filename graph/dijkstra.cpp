@@ -6,7 +6,8 @@ const int inf = 1<<29;
 const int maxn = 1e5+13;
 
 vector<pair<int, int>>adj[maxn+11];
-int dist[maxn+11];
+int dist[maxn+11] = {};
+bool vis[maxn+13] = {};
 
 int main(){
 
@@ -26,6 +27,9 @@ int main(){
     while(!pq.empty()){
         int a = pq.top().second;
         pq.pop();
+
+        if (vis[a]) continue;
+        vis[a] = true;
 
         for(auto &pr:adj[a]){
             int b = pr.first;
