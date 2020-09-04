@@ -32,13 +32,11 @@ int main(){
     vector<int>d2 = d1;
     bellmanford(d2);
 
-    bool cycle = false;
     for(int i = 1;i <= n;i++){
-        if (d2[i] > d1[i]) cycle = true;
+        if (d2[i] > d1[i]){
+            cout << "the node " << i << " is part of a positive cycle" << endl;
+        }
     }
-
-    if (cycle) cout << "Positive cycle found" << endl;
-    else cout << "No positive cycle found" << endl;
 
     /* input
         3 3
