@@ -25,7 +25,7 @@ int main(){
         edges.push_back({a, b, w});
     }
 
-    vector<int>d1(n+11, -(1<<29));
+    vector<int>d1(n+11, -1e9);
     d1[1] = 0;
     bellmanford(d1);
 
