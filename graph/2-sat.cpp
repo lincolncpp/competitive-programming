@@ -25,8 +25,8 @@ void dfs2(int a, int component){
 }
 
 int neg(int a){
-    if (a&1) return a-1;
-    else return a+1;
+    if (a&1) return a+1;
+    else return a-1;
 }
 
 int main(){
