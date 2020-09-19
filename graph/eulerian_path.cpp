@@ -6,17 +6,15 @@ using namespace std;
 
 int const maxn = 1e5;
 
-vector<int>adj[maxn+7];
+set<int>adj[maxn+7];
 int degree[maxn+7] = {};
-
 vector<int>path;
-map<pair<int, int>, bool>deleted;
 
 void dfs(int a){
-    for(int b:adj[a]){
-        if (deleted[{a, b}]) continue;
-        deleted[{a, b}] = true;
-        deleted[{b, a}] = true;
+    while(!adj[a].empty()){
+        int b = *adj[a].begin();
+        adj[a].erase(adj[a].begin());
+        adj[b].erase(a);
         dfs(b);
     }
 
@@ -28,8 +26,8 @@ int main(){
     int n, m;cin>>n>>m;
     for(int i = 0;i < m;i++){
         int a, b;cin>>a>>b;
-        adj[a].push_back(b);
-        adj[b].push_back(a);
+        adj[a].insert(b);
+        adj[b].insert(a);
 
         degree[a]++;
         degree[b]++;
