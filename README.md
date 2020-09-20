@@ -32,6 +32,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Dinic's algorithm](graph/dinic.cpp)
 1. - [x] [Kosaraju](graph/kosaraju.cpp)
 1. - [x] [2-SAT](graph/2-sat.cpp)
+1. - [x] [De Bruijn sequence](graph/bruijn.cpp)
 
 ### Dynamic Programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
