@@ -9,6 +9,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 
 ### Data Structures 
 1. - [x] [Fenwick tree](data_structure/bit.cpp)
+1. - [x] [Fenwick tree 2D](data_structure/bit2D.cpp)
 1. - [x] [Disjoint set union](data_structure/dsu.cpp)
 1. - [x] [Minimum queue](data_structure/min_queue.cpp)
 1. - [x] [Segment tree](data_structure/segtree.cpp)
