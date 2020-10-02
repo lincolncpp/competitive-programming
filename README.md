@@ -14,6 +14,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Minimum queue](data_structure/min_queue.cpp)
 1. - [x] [Segment tree](data_structure/segtree.cpp)
 1. - [x] [Segment tree w/ lazy propagation](data_structure/segtree_lazy.cpp)
+1. - [x] [Persistent segment tree](data_structure/persistent_segtree.cpp)
 1. - [x] [Sparse table](data_structure/sparse_table.cpp)
 1. - [x] [Ordered set](data_structure/ordered_set.cpp)
 1. - [x] [Treap](data_structure/treap.cpp)
