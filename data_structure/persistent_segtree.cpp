@@ -16,6 +16,7 @@ struct node{
     node(node* left, node* right){
         l = left;
         r = right;
+        sum = 0;
         if (l != nullptr) sum += l->sum;
         if (r != nullptr) sum += r->sum;
     }
