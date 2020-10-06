@@ -25,7 +25,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Bellman-Ford](graph/bellmanford.cpp)
 1. - [x] [Floyd-Warshall](graph/floyd.cpp)
 1. - [x] [Kruskal](graph/kruskal.cpp)
-1. - [x] [Lowest common ancestor using binary lifting](graph/lca_binary_lifting.cpp)
+1. - [x] [Binary lifting](graph/lca_binary_lifting.cpp)
 1. - [x] [Eulerian path](graph/eulerian_path.cpp)
 1. - [x] [Topological sort](graph/topological_sort.cpp)
 1. - [x] [Centroid decomposition](graph/centroid_decomp.cpp)
