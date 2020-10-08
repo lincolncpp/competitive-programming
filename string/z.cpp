@@ -10,8 +10,8 @@ vector<int>z(const string &s){
     l = r = 0;
     for(int i = 1;i < n;i++){
         if (i <= r) v[i] = min(v[i-l], r-i+1);
-        else while(i+v[i] < n && s[i+v[i]] == s[v[i]]) v[i]++;
-        if (i > r){
+        while(i+v[i] < n && s[i+v[i]] == s[v[i]]) v[i]++;
+        if (i+v[i]-1 > r){
             l = i;
             r = i+v[i]-1;
         }
