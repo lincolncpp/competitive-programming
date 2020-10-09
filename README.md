@@ -74,6 +74,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Z function](string/z.cpp)
 1. - [x] [KMP](string/kmp.cpp)
 1. - [x] [Trie](string/trie.cpp)
+1. - [x] [Lyndon factorization (Duval algorithm)](string/duval.cpp)
 
 ### Others
 1. - [x] [Mo's algorithm](others/mo.cpp)
