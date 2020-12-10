@@ -19,6 +19,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Ordered set](data_structure/ordered_set.cpp)
 1. - [x] [Treap](data_structure/treap.cpp)
 1. - [ ] Implicit Treap
+1. - [x] [Merge sort tree](data_structure/merge_sort_tree.cpp)
 
 ### Graph
 1. - [x] [Dijkstra](graph/dijkstra.cpp)
