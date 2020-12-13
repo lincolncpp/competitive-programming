@@ -29,7 +29,7 @@ node* build(const vector<int> &v, int tl = 0, int tr = n-1){
 }
 
 int query(node *seg, int l, int r, int tl = 0, int tr = n-1){
-    if (l > r) return 0;
+    if (l > r || seg == nullptr) return 0;
     if (tl == l && tr == r) return seg->sum;
     int mid = (tl+tr)/2;
     return  query(seg->l, l, min(r, mid), tl, mid)+
@@ -38,6 +38,7 @@ int query(node *seg, int l, int r, int tl = 0, int tr = n-1){
 
 node *update(node *seg, int i, int x, int tl = 0, int tr = n-1){
     if (tl == tr) return new node(x);
+    if (seg == nullptr) seg = new node(0);
     int mid = (tl+tr)/2;
     if (i <= mid) return new node(update(seg->l, i, x, tl, mid), seg->r);
     else return new node(seg->l, update(seg->r, i, x, mid+1, tr));
@@ -45,15 +46,13 @@ node *update(node *seg, int i, int x, int tl = 0, int tr = n-1){
 
 int main(){
 
-    vector<int>v = {10, 0, 0, 10};
-    n = v.size();
-    node *seg = build(v);
-
-    node *seg2 = update(seg, 1, 10);
+    n = 1e9+111;
+    node *seg = nullptr;
+    node *seg2 = update(seg, 1e9, 10);
     node *seg3 = update(seg2, 2, 10);
-    cout << query(seg, 0, n-1) << endl;
-    cout << query(seg2, 0, n-1) << endl;
-    cout << query(seg3, 0, n-1) << endl;
+    cout << query(seg, 0, 1e9) << endl;
+    cout << query(seg2, 0, 1e9) << endl;
+    cout << query(seg3, 0, 1e9) << endl;
 
     return 0;
 }
