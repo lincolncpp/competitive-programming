@@ -11,15 +11,16 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Fenwick tree](data_structure/bit.cpp)
 1. - [x] [Fenwick tree 2D](data_structure/bit2D.cpp)
 1. - [x] [Disjoint set union](data_structure/dsu.cpp)
-1. - [x] [Minimum queue](data_structure/min_queue.cpp)
-1. - [x] [Segment tree](data_structure/segtree.cpp)
-1. - [x] [Segment tree w/ lazy propagation](data_structure/segtree_lazy.cpp)
-1. - [x] [Persistent segment tree](data_structure/persistent_segtree.cpp)
-1. - [x] [Sparse table](data_structure/sparse_table.cpp)
-1. - [x] [Ordered set](data_structure/ordered_set.cpp)
-1. - [x] [Treap](data_structure/treap.cpp)
-1. - [ ] Implicit Treap
-1. - [x] [Merge sort tree](data_structure/merge_sort_tree.cpp)
+2. - [x] [DSU w/ rollback](data_structure/dsu_rollback.cpp)
+3. - [x] [Minimum queue](data_structure/min_queue.cpp)
+4. - [x] [Segment tree](data_structure/segtree.cpp)
+5. - [x] [Segment tree w/ lazy propagation](data_structure/segtree_lazy.cpp)
+6. - [x] [Persistent segment tree](data_structure/persistent_segtree.cpp)
+7. - [x] [Sparse table](data_structure/sparse_table.cpp)
+8. - [x] [Ordered set](data_structure/ordered_set.cpp)
+9. - [x] [Treap](data_structure/treap.cpp)
+10. - [ ] Implicit Treap
+11. - [x] [Merge sort tree](data_structure/merge_sort_tree.cpp)
 
 ### Graph
 1. - [x] [Dijkstra](graph/dijkstra.cpp)
