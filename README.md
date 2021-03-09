@@ -65,7 +65,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Segmented sieve](math/segmented_sieve.cpp)
 1. - [x] [Modular multiplication 64 bit in O(1)](math/modmul_64bit.cpp)
 1. - [x] [Ternary search](math/ternary_search.cpp)
-1. - [x] [Binomial coefficient w/ Lucas Theorem](math/nCk_lucas.cpp
+1. - [x] [Binomial coefficient w/ Lucas Theorem](math/nCk_lucas.cpp)
 1. - [x] [Gaussian elimination](math/gaussian_elimination.cpp)
 
 ### String
