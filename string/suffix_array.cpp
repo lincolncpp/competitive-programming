@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+    Build: O(nlogn)
+*/
+
 vector<int> sort_cyclic(const string &s){
     int n = (int)s.size();
     int alpha = 256;
