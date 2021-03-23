@@ -67,6 +67,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 1. - [x] [Ternary search](math/ternary_search.cpp)
 1. - [x] [Binomial coefficient w/ Lucas Theorem](math/nCk_lucas.cpp)
 1. - [x] [Gaussian elimination](math/gaussian_elimination.cpp)
+1. - [x] [Gaussian elimination XOR](math/gaussian_elimination_xor.cpp)
 
 ### String
 1. - [x] [Longest palindromic substring O(N^2)](string/lp_substring.cpp)
