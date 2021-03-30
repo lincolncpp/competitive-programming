@@ -19,7 +19,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 7. - [x] [Sparse table](data_structure/sparse_table.cpp)
 8. - [x] [Ordered set](data_structure/ordered_set.cpp)
 9. - [x] [Treap](data_structure/treap.cpp)
-10. - [ ] Implicit Treap
+10. - [x] [Implicit Treap](implicit_treap.cpp)
 11. - [x] [Merge sort tree](data_structure/merge_sort_tree.cpp)
 
 ### Graph
