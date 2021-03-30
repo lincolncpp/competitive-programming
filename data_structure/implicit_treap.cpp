@@ -2,57 +2,61 @@
 
 using namespace std;
 
-struct treap{
-private:
+/*
+    This structure is 0-based !!!
+
+    Operations O(logN):
+    - Insert
+    - Erase
+    - Update
+    - Erase interval
+    - Add on the interval
+    - Query value
+    - Query sum on the interval
+    - Reverse on the interval
+*/
+
+struct implicit_treap{
     struct node{
-        int key, prior;
+        int value, prior;
         node *l = nullptr, *r = nullptr;
         int cnt = 1;
+        int sum = 0;
+        int lazy = 0;
+        bool rev = false;
 
-        node(int k) : key(k), prior(rand()) {}
+        node(int k) : value(k), sum(k), prior(rand()) {}
     };
 
     node *t = nullptr;
 
-    int cnt(node *n){
-        return n?n->cnt:0;
+    void push(node *n){
+        if (n){
+            n->value += n->lazy;
+            n->sum += cnt(n)*n->lazy;
+            if (n->l) n->l->lazy += n->lazy;
+            if (n->r) n->r->lazy += n->lazy;
+            n->lazy = 0;
+
+            if (n->rev){
+                n->rev = false;
+                swap(n->l, n->r);
+                if (n->l) n->l->rev ^= true;
+                if (n->r) n->r->rev ^= true;
+            }
+        }
     }
 
-    void upd_cnt(node *n){
-        if (n) n->cnt = 1+cnt(n->l)+cnt(n->r);
-    }
+    int cnt(node *n){return n?n->cnt:0;}
+    void upd_cnt(node *n){if (n) n->cnt = 1+cnt(n->l)+cnt(n->r);}
 
-    void split(node *root, int key, node *&l, node *&r){
-        if (!root) l = r = nullptr;
-        else if (key <= root->key){
-            r = root;
-            split(root->l, key, l, root->l);
-        }
-        else{
-            l = root;
-            split(root->r, key, root->r, r);
-        }
-
-        upd_cnt(l);
-        upd_cnt(r);
-    }
-
-    void insert(node *&root, node *element){
-        if (!root) return void(root = element);
-
-        if (element->prior > root->prior){
-            split(root, element->key, element->l, element->r);
-            root = element;
-        }
-        else{
-            if (element->key < root->key) insert(root->l, element);
-            else insert(root->r, element);
-        }
-
-        upd_cnt(root);
-    }
+    int sum(node *n){return n?n->sum:0;}
+    void upd_sum(node *n){if (n) n->sum = n->value+sum(n->l)+sum(n->r);}
 
     void merge(node *&root, node *l, node *r){
+        push(l);
+        push(r);
+
         if (!r || !l) root = l?l:r;
         else if (l->prior > r->prior){
             root = l;
@@ -64,21 +68,124 @@ private:
         }
 
         upd_cnt(root);
+        upd_sum(root);
     }
 
-    void erase(node *&root, int key){
+    void split(node *root, int key, node *&l, node *&r, int add = 0){
+        if (!root) return void(l = r = nullptr);
+        push(root);
+
+        int curr_key = add + cnt(root->l);
+        if (key <= curr_key){
+            r = root;
+            split(root->l, key, l, root->l, add);
+        }
+        else{
+            l = root;
+            split(root->r, key, root->r, r, add + 1 + cnt(root->l));
+        }
+
+        upd_cnt(root);
+        upd_sum(root);
+    }
+
+    void insert(int key, int value){
+        node *element = new node(value);
+        node *tl = nullptr, *tr = nullptr, *aux = nullptr;
+
+        split(t, key, tl, tr);
+        merge(aux, tl, element);
+        merge(t, aux, tr);
+    }
+
+    void erase(node *&root, int key, int add = 0){
         if (!root) return;
-        if (root->key == key) {
+        push(root);
+
+        int curr_key = add + cnt(root->l);
+        if (curr_key == key) {
             node *aux = root;
             merge(root, root->l, root->r);
             delete aux;
         }
         else{
-            if (key < root->key) erase(root->l, key);
-            else erase(root->r, key);
+            if (key < curr_key) erase(root->l, key, add);
+            else erase(root->r, key, add + 1 + cnt(root->l));
         }
 
         upd_cnt(root);
+        upd_sum(root);
+    }
+    void erase(int key){erase(t, key);}
+
+    void erase(int key_l, int key_r){
+        node *tl = nullptr, *tr = nullptr, *aux = nullptr;
+        split(t, key_l, tl, aux);
+        split(aux, key_r-key_l+1, aux, tr);
+        merge(t, tl, tr);
+    }
+
+    int get(node *root, int key, int add = 0){
+        if (!root) return 0;
+        push(root);
+        int curr_key = add + cnt(root->l);
+        if (curr_key == key) return root->value;
+        if (key < curr_key) return get(root->l, key, add);
+        return get(root->r, key, add + 1 + cnt(root->l));
+    }
+    int get(int key){return get(t, key);}
+
+    int query(int key_l, int key_r){
+        node *tl = nullptr, *tr = nullptr, *aux = nullptr;
+        int res = 0;
+
+        split(t, key_l, tl, aux);
+        split(aux, key_r-key_l+1, aux, tr);
+
+        push(aux);
+        upd_sum(aux);
+        res = sum(aux);
+
+        merge(t, tl, aux);
+        merge(t, t, tr);
+
+        return res;
+    }
+
+    void update(node *&root, int key, int value, int add = 0){
+        if (!root) return;
+        push(root);
+
+        int curr_key = add + cnt(root->l);
+        if (curr_key == key) root->value = value;
+        else{
+            if (key < curr_key) update(root->l, key, value, add);
+            else update(root->r, key, value, add + 1 + cnt(root->l));
+        }
+
+        upd_cnt(root);
+        upd_sum(root);
+    }
+    void update(int key, int value){update(t, key, value);}
+
+    void add(int key_l, int key_r, int value){
+        node *tl = nullptr, *tr = nullptr, *aux = nullptr;
+
+        split(t, key_l, tl, aux);
+        split(aux, key_r-key_l+1, aux, tr);
+        aux->lazy += value;
+        merge(t, tl, aux);
+        merge(t, t, tr);
+    }
+
+    void reverse(int key_l, int key_r){
+        node *tl = nullptr, *tr = nullptr, *aux = nullptr;
+
+        split(t, key_l, tl, aux);
+        split(aux, key_r-key_l+1, aux, tr);
+        aux->rev ^= true;
+        merge(t, tl, aux);
+        merge(t, t, tr);
     }
 
     void del(node *n){
@@ -88,140 +195,54 @@ private:
         delete n;
     }
 
-    /* ==================== EXTRA ==================== */
-    int kth(node *root, int pos){ // O(log(N))
-        if (!root) return 0;
-
-        int p = 1+cnt(root->l);
-        if (p == pos) return root->key;
-
-        if (p > pos) return kth(root->l, pos);
-        else return kth(root->r, pos-p);
-    }
-
-    node *unite(node *l, node *r){ // O(M*log(N/M))
-        if (!l || !r) return l?l:r;
-        if (l->prior < r->prior) swap(l, r);
-        node *tl;
-        node *tr;
-        split(r, l->key, tl, tr);
-        l->l = unite(l->l, tl);
-        l->r = unite(l->r, tr);
-
-        upd_cnt(l);
-        return l;
-    }
-
     void print(node *n){
         if (!n) return;
+        push(n);
         print(n->l);
-        cout << n->key << " ";
+        cout << n->value << " ";
         print(n->r);
-    }
-
-public:
-    void insert(int key){
-        insert(t, new node(key));
-    }
-
-    void erase(int key){
-        erase(t, key);
-    }
-
-    ~treap(){
-        del(t);
-    }
-
-    /* ==================== EXTRA ==================== */
-    bool find(int key){
-        node *aux = t;
-        while(aux && aux->key != key){
-            if (key < aux->key) aux = aux->l;
-            else aux = aux->r;
-        }
-        return aux != nullptr;
-    }
-
-    int order_of_key(int key){
-        int res = 0;
-
-        node *l = nullptr, *r = nullptr;
-        split(t, key, l, r);
-        res = cnt(l);
-
-        merge(t, l, r);
-        return res;
-    }
-
-    void erase_range(int l, int r){
-        node *tl = nullptr, *tr = nullptr, *aux = nullptr;
-        split(t, l, tl, aux);
-        split(aux, r+1, aux, tr);
-        del(aux);
-        merge(t, tl, tr);
-    }
-
-    int kth(int pos){
-        return kth(t, pos+1);
-    }
-
-    void unite(treap &b){
-        t = unite(t, b.t);
-        b.t = nullptr;
-    }
-
-    int size(){
-        return cnt(t);
     }
 
     void print(){
         print(t);
         cout << endl;
     }
+
+    int size(){return cnt(t);}
+    ~implicit_treap(){del(t);}
 };
+
+implicit_treap t;
 
 int main(){
 
-    treap k;
-    k.insert(-5);
-    k.insert(20);
-
-    treap t;
-    t.insert(11);
-    t.insert(200);
-    t.insert(156);
-    t.insert(7);
-    t.insert(10);
-    t.insert(12);
-
-    cout << "Treap t" << endl;
+    t.insert(0, 1);
+    t.insert(0, 2);
+    t.insert(0, 3);
+    t.insert(0, 4);
+    t.insert(0, 5);
+    t.insert(0, 6);
+    t.insert(0, 7);
+    t.insert(0, 8);
+    t.insert(0, 9);
     t.print();
-    cout << endl;
 
-    cout << "Treap k" << endl;
-    k.print();
-    cout << endl;
-
-    cout << "Treap t + k" << endl;
-    t.unite(k);
+    t.erase(1);
+    t.update(t.size()-1, 1000);
     t.print();
-    cout << endl;
 
-    cout << "Erase [10, 100]" << endl;
-    t.erase_range(10, 100);
+    t.erase(4, 6);
     t.print();
-    cout << endl;
 
-    cout << "3-th element" << endl;
-    cout << t.kth(3) << endl;
-    cout << endl;
+    t.add(-1e9, 1e9, -5);
+    t.print();
 
-    cout << "order of key 156" << endl;
-    cout << t.order_of_key(156) << endl;
-    cout << endl;
+    cout << "sum(1, 3) = " << t.query(1, 3) << endl;
 
-    cout << "find 11" << endl;
-    cout << t.find(11) << endl;
+    t.reverse(-1e9, 1e9);
+    t.print();
+
+    cout << "get(0) = " << t.get(0) << endl;
 
     return 0;
 }
