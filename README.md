@@ -38,6 +38,7 @@ Note: This is a publish-only repository and all pull requests are ignored.
 10. - [x] [Kosaraju](graph/kosaraju.cpp)
 11. - [x] [2-SAT](graph/2-sat.cpp)
 12. - [x] [De Bruijn sequence](graph/bruijn.cpp)
+13. - [x] [Kuhn's algorithm](graph/kuhn.cpp) 
 
 ### Dynamic Programming
 1. - [x] [Longest common subsequence](dp/lcs.cpp)
