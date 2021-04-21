@@ -2,7 +2,12 @@
 
 using namespace std;
 
-int const maxn = 1e5;
+/*
+    Build: O(n)
+    Query: O(T*logn), where T is the tree_query complexity
+*/
+
+const int maxn = 1e5;
 vector<int>adj[maxn+7];
 int parent[maxn+7] = {};
 int depth[maxn+7] = {};
