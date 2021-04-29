@@ -2,15 +2,20 @@
 
 using namespace std;
 
-#define N 5000000
+/*
+    Build: O(nlogn)
+    Factor: O(logn)
+*/
 
-int lpf[N+1] = {};
+const int maxn = 1e6;
 
-void sieve(){
-    for(int i = 1;i <= N;i++) lpf[i] = i;
-    for(int i = 2;i <= N;i++){
+int lpf[maxn+123] = {};
+
+void build(){
+    for(int i = 1;i <= maxn;i++) lpf[i] = i;
+    for(int i = 2;i <= maxn;i++){
         if (lpf[i] == i){
-            for(int j = 2;i*j <= N;j++){
+            for(int j = 2;i*j <= maxn;j++){
                 int x = i*j;
                 if (lpf[x] == x) lpf[x] = i;
             }
@@ -18,7 +23,7 @@ void sieve(){
     }
 }
 
-vector<int> factorization(int x){
+vector<int> factor(int x){
     vector<int>primes;
     while(x != 1){
         primes.push_back(lpf[x]);
@@ -29,11 +34,12 @@ vector<int> factorization(int x){
 
 int main(){
 
-    sieve();
-    int x;cin>>x;
+    build();
 
-    cout << "Factors of " << x << endl;
-    for(auto p:factorization(x)) cout << p << endl;
+    int x = 123456;
+    cout << "Factors of " << x << ": " << endl;
+    for(auto p:factor(x)) cout << p << " ";
+    cout << endl;
 
     return 0;
 }
