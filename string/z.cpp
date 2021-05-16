@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+    Build: O(n)
+*/
+
 vector<int>z(const string &s){
     int n = (int)s.size();
     vector<int>v(n);
