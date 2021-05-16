@@ -2,10 +2,17 @@
 
 using namespace std;
 
+/*
+    Build: O(n)
+    Substring hash: O(1)
+    Check palindrome: O(1)
+*/
+
 #define ll long long
 #define hash apdmfoiwahofqjenfoj
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+ll rnd(ll a, ll b){return uniform_int_distribution<ll>(a, b)(rng);}
 
 const ll mod = 1e9+7;
 
@@ -27,6 +34,7 @@ struct hash{
         power.assign(n, 0);
         inverse.assign(n, 0);
 
+        p %= mod;
         ll ip = modpow(p, mod-2); // inverse of p
         power[0] = inverse[0] = 1;
         for(int i = 1;i < n;i++) power[i] = power[i-1]*p % mod;
@@ -64,7 +72,7 @@ int main(){
     string s = "abacaba";
     int n = (int)s.size();
 
-    hash h(s, uniform_int_distribution<ll>(100, mod-2)(rng));
+    hash h(s, rnd(100, mod-2));
 
     cout << h.substr(0, n-1) << endl;
     cout << h.rsubstr(0, n-1) << endl;
