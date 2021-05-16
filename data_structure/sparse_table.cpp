@@ -2,6 +2,11 @@
 
 using namespace std;
 
+/*
+    Build: O(nlogn)
+    Query: O(1)
+*/
+
 #define lg2(x) 31-__builtin_clz(x)
 
 const int maxn = 1e5;
