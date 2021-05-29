@@ -1,7 +1,7 @@
 ![language](https://img.shields.io/badge/language-c++-blue.svg?style=flat)
 [![license](https://img.shields.io/github/license/lincolncpp/grape2d.svg)](LICENSE)
 
-## Competitive programming stuffs
+# Competitive programming stuffs
 Data structures and algorithms for competitive programming.
 
 Note: This is a publish-only repository and all pull requests are ignored.
