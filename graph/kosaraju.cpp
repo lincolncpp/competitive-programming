@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+    Runtime: O(n+m)
+*/
+
 const int maxn = 1e5;
 vector<int>adj[maxn+11];
 vector<int>radj[maxn+11];
@@ -37,6 +41,8 @@ int main(){
     cout << "Components:" << endl;
 
     reverse(order.begin(), order.end());
+
+    // It iterates over vertices in topological sort order
     for(int a:order){
         if (vis[a]) continue;
 
@@ -47,7 +53,7 @@ int main(){
         comp.clear();
     }
 
-    /* input
+    /* sample
         5 5
         1 2
         2 3
